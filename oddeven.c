@@ -7,5 +7,12 @@ void main(){
 		printf("the given number %d is even\n",n);
 	else
 		printf("the given number %d is odd\n",n);
+
+	if ( (n&1) == 0)
+		printf("the given number %d is even\n",n);
+	else
+		printf("the given number %d is odd\n",n);
+
+		
 }
 
