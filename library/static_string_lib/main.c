@@ -7,12 +7,18 @@ void main(int argc,char *argv[]){
 	char *b=NULL;
 	b=(char *)malloc(my_strlen(argv[1])+1);
 
+	
+	//strlen
 	printf("the length of the strings (%s) is %d  and  (%s) is %d\n",argv[1],my_strlen(argv[1]),argv[2],my_strlen(argv[2]) );
 	
+	
+	//strcpy
 	printf("before copy a = '%s'  b= '%s' \n",argv[1],b);
 	my_strcpy(b,argv[1]);
 	printf("after copy a = '%s'  b='%s'\n",argv[1],b);
 	
+	
+	//strcmp
 	n=my_strcmp(argv[1],argv[2]);
 
 	if (n>0)
@@ -22,6 +28,8 @@ void main(int argc,char *argv[]){
 	else 
 		printf("%s and %s both are equal\n",argv[1],argv[2]);
 	
+	
+	//strcat
 	printf("before concate a = '%s'  b = '%s'\n",argv[1],argv[2]);
 	my_strcat(argv[1],argv[2]);
 	printf("after concate a= '%s'  b= '%s'\n",argv[1],argv[2]);
