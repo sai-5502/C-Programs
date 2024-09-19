@@ -85,7 +85,6 @@ struct node *del_begin(struct node *head){
 struct node *del_end(struct node *head){
 	struct node *a=head;
 	struct node *b=head;
-
 	if (a == NULL){
 		printf("list is empty\n");
 		return NULL;
@@ -101,6 +100,26 @@ struct node *del_end(struct node *head){
 	}
 }
 
+struct node *del_position(struct node *head,int pos){
+	struct node *temp=head;
+	struct node *a=head;
+	struct node *b=head;
+	int i;
+	for (i=0;i<pos-1 && a!=NULL;i++){
+		b=a;
+		a=a->next;
+	}
+
+	if(pos==1){
+		head=del_begin(head);
+		return head;
+	}
+	else{
+		b->next=a->next;
+		free(a);
+		return head;
+	}
+}
 
 void display(struct node *head){
 	struct node *temp=head;
@@ -117,26 +136,35 @@ void display(struct node *head){
 
 void main(){
 	struct node *head=NULL;
+	//add 7 8 9 in the begin
 	head=add_begin(head,7);
 	head=add_begin(head,8);
 	head=add_begin(head,9);
 	display(head);
+	//add 4 3 2 1 0 at the end
 	head=add_end(head,4);
 	head=add_end(head,3);
 	head=add_end(head,2);
 	head=add_end(head,1);
 	head=add_end(head,0);
 	display(head);
+	//add 6 and 5 at positions 4 and 5
 	head=add_pos(head,6,4);
 	head=add_pos(head,5,5);
 	display(head);
+	//del two elements from begin
 	head=del_begin(head);
 	head=del_begin(head);
 	display(head);
+	//del two elements from end
 	head=del_end(head);
 	head=del_end(head);
 	display(head);
-	head=del_begin(head);
-	head=del_end(head);
+	//del an element at position 1
+	head=del_position(head,1);
 	display(head);
+	//del an element at position 2
+	head=del_position(head,2);
+	display(head);
+
 }
