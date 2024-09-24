@@ -8,8 +8,7 @@ struct node{
 
 
 struct node *add_begin(struct node *head,int num){
-	struct node *temp1=head;
-	struct node *temp2=head;
+	struct node *temp=head;
 	struct node *new=NULL;
 	new=(struct node *)malloc(sizeof(struct node));
 	if (new==NULL){
@@ -25,18 +24,17 @@ struct node *add_begin(struct node *head,int num){
 	}
 	else{
 		new->num=num;
-		new->next=head;
+		while (temp->next != head)
+			temp=temp->next;
+		new->next=temp->next;
+		temp->next=new;
 		head=new;
-		while (temp1->next != temp2)
-			temp1=temp1->next;
-		temp1->next=new;
 	}
 	return head;
 }
 	
 struct node *add_end(struct node *head,int num){
-	struct node *temp1=head;
-	struct node *temp2=head;
+	struct node *temp=head;
 	struct node *new=NULL;
 	new=(struct node *)malloc(sizeof(struct node));
 	if (new==NULL){
@@ -52,10 +50,10 @@ struct node *add_end(struct node *head,int num){
 	}
 	else{
 		new->num=num;
-		new->next=head;
-		while(temp1->next != temp2)
-			temp1=temp1->next;
-		temp1->next=new;
+		while(temp->next != head)
+			temp=temp->next;
+		new->next=temp->next;
+		temp->next=new;
 	}
 	return head;
 }
