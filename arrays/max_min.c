@@ -11,10 +11,10 @@ void main(){
 	max=a[0];
 	min=a[0];
 	
-	for (i=1;i<N;i++){
+	for (i=0;i<N;i++){
 		if (a[i] > max)
 			max=a[i];
-		else
+		else if(a[i] < min)
 			min=a[i];
 	}
 	printf("\nthe maximum element is %d\n",max);
